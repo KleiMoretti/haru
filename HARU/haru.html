@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>James Andrei Garcia – Portfolio</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #ffffff;
+            --bg2: #f5f5f5;
+            --bg3: #eeeeee;
+            --black: #0a0a0a;
+            --black2: #1a1a1a;
+            --muted: #555555;
+            --border: rgba(0, 0, 0, 0.10);
+            --border2: rgba(0, 0, 0, 0.22);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--black);
+            font-family: 'DM Sans', sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.1rem 2.5rem;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid var(--border2);
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--black);
+            letter-spacing: 0.04em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+        }
+
+        .nav-links a {
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: var(--muted);
+            text-decoration: none;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--black);
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 7rem 2rem 4rem;
+            background: var(--bg);
+        }
+
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            opacity: 0.06;
+            background-image: linear-gradient(#000 1px, transparent 1px),
+                linear-gradient(90deg, #000 1px, transparent 1px);
+            background-size: 56px 56px;
+        }
+
+        .hero-circles {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .hero-circle {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(0, 0, 0, 0.07);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 780px;
+        }
+
+        /* BADGE */
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--black2);
+            background: var(--bg3);
+            border: 1px solid var(--border2);
+            border-radius: 999px;
+            padding: 0.38rem 1rem;
+            margin-bottom: 1.6rem;
+            animation: fadeUp 0.6s ease both;
+        }
+
+        .badge-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--black);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.2;
+            }
+        }
+
+        .profile {
+            width: 200px;
+        }
+
+        /* NAME */
+        .hero-name {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.8rem, 7vw, 5.5rem);
+            font-weight: 900;
+            line-height: 1.05;
+            color: var(--black);
+            animation: fadeUp 0.7s 0.1s ease both;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-name .highlight {
+            color: var(--black2);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-name .highlight::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 100%;
+            height: 3px;
+            background: var(--black);
+
+            border-radius: 2px;
+        }
+
+        /* COURSE TAGS */
+        .hero-course {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 1.3rem 0 1.8rem;
+            animation: fadeUp 0.7s 0.2s ease both;
+        }
+
+        .course-tag {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.35rem 0.9rem;
+            border-radius: 999px;
+        }
+
+        .course-tag.dark {
+            background: var(--black);
+            color: #fff;
+        }
+
+        .course-tag.light {
+            background: var(--bg3);
+            color: var(--black2);
+            border: 1px solid var(--border2);
+        }
+
+        /* ABOUT BOX */
+        .hero-about {
+            max-width: 610px;
+            margin: 0 auto 2.4rem;
+            font-size: 1rem;
+            font-weight: 300;
+            line-height: 1.85;
+            color: var(--muted);
+            animation: fadeUp 0.7s 0.3s ease both;
+            border: 1.5px solid var(--black);
+            border-radius: 16px;
+            padding: 1.6rem 2rem;
+            background: var(--bg2);
+            position: relative;
+        }
+
+        .hero-about::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: -5px;
+            bottom: -5px;
+            border: 1.5px solid rgba(0, 0, 0, 0.12);
+            border-radius: 17px;
+            z-index: -1;
+        }
+
+        /* CTA BUTTONS */
+        .hero-ctas {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            animation: fadeUp 0.7s 0.4s ease both;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.8rem;
+            border-radius: 999px;
+            background: var(--black);
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.88rem;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.15s;
+        }
+
+        .btn-primary:hover {
+            background: #333;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.8rem;
+            border-radius: 999px;
+            background: transparent;
+            color: var(--black);
+            border: 1.5px solid var(--black);
+            font-weight: 500;
+            font-size: 0.88rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s, transform 0.15s;
+        }
+
+        .btn-outline:hover {
+            background: var(--black);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* SECTIONS */
+        section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .section-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 2.5rem;
+            line-height: 1.2;
+        }
+
+        .section-line {
+            width: 48px;
+            height: 3px;
+            border-radius: 2px;
+            background: var(--black);
+            margin-bottom: 2rem;
+        }
+
+        .section-divider {
+            max-width: 900px;
+            margin: 0 auto;
+            height: 1px;
+            background: var(--border2);
+        }
+
+        /* SKILLS */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+        }
+
+        .skill-card {
+            background: var(--bg);
+            border: 1.5px solid var(--border2);
+            border-radius: 14px;
+            padding: 1.4rem 1.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            transition: transform 0.2s, background 0.2s;
+            position: relative;
+            overflow: hidden;
+            cursor: default;
+        }
+
+        .skill-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--black);
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-4px);
+            background: var(--black);
+        }
+
+        .skill-card:hover::after {
+            opacity: 1;
+        }
+
+        .skill-card:hover .skill-name {
+            color: #fff;
+        }
+
+        .skill-card:hover .skill-bar-fill {
+            background: #fff;
+        }
+
+        .skill-card:hover .skill-bar-bg {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .skill-name {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--black);
+            transition: color 0.2s;
+        }
+
+        .skill-bar-bg {
+            height: 4px;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+            transition: background 0.2s;
+        }
+
+        .skill-bar-fill {
+            height: 100%;
+            border-radius: 2px;
+            background: var(--black);
+            transition: background 0.2s;
+        }
+
+        /* TECH STACK */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 1rem;
+        }
+
+        .tech-card {
+            background: var(--bg2);
+            border: 1.5px solid var(--border2);
+            border-radius: 12px;
+            padding: 1.4rem 1rem;
+            text-align: center;
+            transition: transform 0.2s, background 0.2s;
+            cursor: default;
+        }
+
+        .tech-card:hover {
+            transform: translateY(-3px);
+            background: var(--black);
+        }
+
+        .tech-card:hover .tech-name {
+            color: #fff;
+        }
+
+        .tech-initial {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.5rem;
+            display: block;
+            transition: color 0.2s;
+        }
+
+        .tech-card:hover .tech-initial {
+            color: #fff;
+        }
+
+        .tech-name {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--muted);
+            letter-spacing: 0.06em;
+            transition: color 0.2s;
+        }
+
+        /* BLOG */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.4rem;
+        }
+
+        /* Featured blog card — full width */
+        .blog-featured {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1.5px solid var(--border2);
+            background: var(--bg);
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+
+        .blog-featured:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.10);
+        }
+
+        @media (max-width: 600px) {
+            .blog-featured {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .blog-featured-thumb {
+            background: var(--black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 220px;
+            border-right: 1.5px solid var(--border2);
+        }
+
+        .blog-featured-thumb-inner {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* I-style ang video container para maging centered at maganda ang layout */
+        .blog-featured-video-container {
+            grid-column: 1 / -1;
+            display: flex;
+            justify-content: center;
+            /* Center horizontally */
+            align-items: center;
+            /* Center vertically */
+            padding: 20px;
+            background: var(--bg);
+            border: 1.5px solid var(--border2);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        /* Siguraduhin na ang video ay hindi lalampas sa container */
+        .blog-video {
+            width: 100%;
+            max-width: 700px;
+            /* Pwede mong baguhin ang size na ito */
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .blog-featured-thumb-inner span {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #fff;
+        }
+
+        .blog-featured-body {
+            padding: 2rem 1.8rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+            justify-content: center;
+        }
+
+        .blog-featured-tag {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #fff;
+            background: var(--black);
+            border-radius: 999px;
+            padding: 0.25rem 0.8rem;
+            align-self: flex-start;
+        }
+
+        .blog-featured-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: var(--black);
+            line-height: 1.25;
+        }
+
+        .blog-featured-excerpt {
+            font-size: 0.88rem;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        /* Regular blog cards */
+        .blog-card {
+            background: var(--bg);
+            border: 1.5px solid var(--border2);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.10);
+        }
+
+        .blog-thumb {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: var(--bg3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1.5px solid var(--border2);
+            position: relative;
+        }
+
+        .blog-thumb-initial {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--black);
+            opacity: 0.15;
+        }
+
+        .blog-thumb-label {
+            position: absolute;
+            bottom: 0.6rem;
+            left: 0.8rem;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #fff;
+            background: var(--black);
+            border-radius: 999px;
+            padding: 0.25rem 0.7rem;
+        }
+
+        .blog-body {
+            padding: 1.2rem 1.3rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .blog-date {
+            font-size: 0.7rem;
+            color: var(--muted);
+            letter-spacing: 0.06em;
+        }
+
+        .blog-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--black);
+            line-height: 1.35;
+        }
+
+        .blog-excerpt {
+            font-size: 0.85rem;
+            color: var(--muted);
+            line-height: 1.65;
+            flex: 1;
+        }
+
+        .blog-read {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--black);
+            margin-top: 0.8rem;
+            text-decoration: none;
+            border-bottom: 1.5px solid var(--black);
+            padding-bottom: 1px;
+            align-self: flex-start;
+            transition: opacity 0.2s;
+        }
+
+        .blog-read:hover {
+            opacity: 0.45;
+        }
+
+        /* CONTACT */
+        .contact-box {
+            background: var(--black);
+            border-radius: 20px;
+            padding: 3rem 2.5rem;
+            border: 1.5px solid var(--black);
+        }
+
+        .contact-inner {
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-box-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.45);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-box-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.8rem;
+        }
+
+        .contact-box-sub {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.93rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        @media (max-width: 540px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 12px;
+            padding: 1rem 1.2rem;
+            transition: background 0.2s;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .contact-icon-wrap {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            background: rgba(255, 255, 255, 0.1);
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .contact-label {
+            font-size: 0.68rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 0.15rem;
+        }
+
+        .contact-value {
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: #fff;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border2);
+            color: var(--muted);
+            font-size: 0.8rem;
+            background: var(--bg);
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <span class="nav-logo">HARU</span>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#tech">Tech</a>
+            <a href="#blog">Blog</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <div class="hero" id="about">
+        <div class="hero-grid"></div>
+        <div class="hero-circles">
+            <div class="hero-circle" style="width:500px;height:500px;top:-100px;right:-150px;"></div>
+            <div class="hero-circle" style="width:300px;height:300px;bottom:-80px;left:-80px;"></div>
+            <div class="hero-circle" style="width:180px;height:180px;top:30%;left:5%;"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                MY PERSONAL PORTFOLIO
+            </div>
+            <h1 class="hero-name">
+                James Andrei<br><span class="highlight">Luise F. Garcia</span>
+            </h1>
+            <div class="hero-course">
+                <span class="course-tag dark">Computer Science</span>
+                <span class="course-tag light">BSCS-DS 1B</span>
+                <span class="course-tag light">Laguna University</span>
+            </div>
+            <img class="profile" src="profile.jpg" alt="">
+
+            <p class="hero-about">
+                I am <strong style="color:var(--black);font-weight:600;">James Andrei Luise F. Garcia</strong>, a
+                college student at Laguna University pursuing a Computer Science course at BSCS-DS 1B. I am driven by
+                curiosity and a desire to grow professionally in the tech space. While I am early in my career journey,
+                I have spent my time honing my skills in Java, HTML, CSS, and C/C++ through coursework and personal
+                projects. I thrive in collaborative environments and am eager to contribute to a team that values
+                innovation and hard work. Let's connect!
+            </p>
+            <div class="hero-ctas">
+                <a href="#contact" class="btn-primary">Get In Touch</a>
+                <a href="#skills" class="btn-outline">My Skills</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- SKILLS -->
+    <section id="skills">
+        <div class="reveal">
+            <div class="section-label">What I Bring</div>
+            <div class="section-title">Skills &amp; Strengths</div>
+            <div class="section-line"></div>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-card reveal">
+                <div class="skill-name">Problem Solving</div>
+                <div class="skill-bar-bg">
+                    <div class="skill-bar-fill" style="width:88%"></div>
+                </div>
+            </div>
+            <div class="skill-card reveal">
+                <div class="skill-name">Time Management</div>
+                <div class="skill-bar-bg">
+                    <div class="skill-bar-fill" style="width:82%"></div>
+                </div>
+            </div>
+            <div class="skill-card reveal">
+                <div class="skill-name">Patience</div>
+                <div class="skill-bar-bg">
+                    <div class="skill-bar-fill" style="width:90%"></div>
+                </div>
+            </div>
+            <div class="skill-card reveal">
+                <div class="skill-name">Resilience</div>
+                <div class="skill-bar-bg">
+                    <div class="skill-bar-fill" style="width:85%"></div>
+                </div>
+            </div>
+            <div class="skill-card reveal">
+                <div class="skill-name">Networking</div>
+                <div class="skill-bar-bg">
+                    <div class="skill-bar-fill" style="width:78%"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- TECH STACK -->
+    <section id="tech">
+        <div class="reveal">
+            <div class="section-label">Languages &amp; Tools</div>
+            <div class="section-title">Tech Stack</div>
+            <div class="section-line"></div>
+        </div>
+        <div class="tech-grid">
+            <div class="tech-card reveal">
+                <span class="tech-initial">Jv</span>
+                <div class="tech-name">Java</div>
+            </div>
+            <div class="tech-card reveal">
+                <span class="tech-initial">Ht</span>
+                <div class="tech-name">HTML</div>
+            </div>
+            <div class="tech-card reveal">
+                <span class="tech-initial">Cs</span>
+                <div class="tech-name">CSS</div>
+            </div>
+            <div class="tech-card reveal">
+                <span class="tech-initial">C+</span>
+                <div class="tech-name">C / C++</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- BLOG -->
+    <section id="blog">
+        <!-- BLOG -->
+        <section id="blog">
+            <div class="reveal">
+                <div class="section-label">Thoughts & Insights</div>
+                <div class="section-title">Blog</div>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="blog-grid reveal">
+                <!-- Featured -->
+                <div class="blog-featured-video-container">
+                    <video class="blog-video" controls>
+                        <source src="blogHaru.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="contact-box reveal">
+            <div class="contact-inner">
+                <div class="contact-box-label">Let's Connect</div>
+                <div class="contact-box-title">Contact Me</div>
+                <p class="contact-box-sub">Always open to new connections, collaborations, or a friendly chat about
+                    tech. Feel free to reach out!</p>
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <div class="contact-icon-wrap">@</div>
+                        <div>
+                            <div class="contact-label">Email</div>
+                            <div class="contact-value">HaruGarcia289@gmail.com</div>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon-wrap">#</div>
+                        <div>
+                            <div class="contact-label">Phone</div>
+                            <div class="contact-value">0928 478 2844</div>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon-wrap">U</div>
+                        <div>
+                            <div class="contact-label">School</div>
+                            <div class="contact-value">Laguna University</div>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon-wrap">B</div>
+                        <div>
+                            <div class="contact-label">Course</div>
+                            <div class="contact-value">BSCS-DS 1B</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2025 James Andrei Luise F. Garcia &middot; Laguna University &middot; BSCS-DS 1B</p>
+        <p style="margin-top:0.4rem;font-size:0.72rem;opacity:0.5;">Built with passion for the tech space.</p>
+    </footer>
+
+    <script>
+        // Scroll reveal animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) e.target.classList.add('visible');
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+
+</html>
